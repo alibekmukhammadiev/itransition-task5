@@ -3,7 +3,12 @@ const cors = require("cors");
 const { generateBooks } = require("./utils/generateBook");
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: "https://itransition-task5-full.netlify.app",
+  methods: ["GET"],
+};
+
+app.use(cors(corsOptions));
 
 app.get("/api/books", (req, res) => {
   const { region, seed, likes, reviews, page } = req.query;

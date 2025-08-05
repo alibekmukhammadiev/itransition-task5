@@ -17,7 +17,9 @@ function App() {
     async (pageNumber = 1, reset = false) => {
       try {
         const query = `region=${region}&seed=${seed}&likes=${likes}&reviews=${reviews}&page=${pageNumber}`;
-        const res = await fetch(`http://localhost:5000/api/books?${query}`);
+        const res = await fetch(
+          `https://itransition-task5-u4rg.onrender.com/api/books?${query}`
+        );
         const data = await res.json();
 
         if (reset) {
@@ -42,9 +44,9 @@ function App() {
     fetchBooks(1, true);
   }, [region, seed, likes, reviews, fetchBooks]);
 
-  // Infinite scroll 
+  // Infinite scroll
   useEffect(() => {
-    const target = loader.current; 
+    const target = loader.current;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -55,10 +57,10 @@ function App() {
       { threshold: 1 }
     );
 
-    if (target) observer.observe(target); 
+    if (target) observer.observe(target);
 
     return () => {
-      if (target) observer.unobserve(target); 
+      if (target) observer.unobserve(target);
     };
   }, [hasMore]);
 
