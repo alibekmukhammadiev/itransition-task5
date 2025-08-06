@@ -40,7 +40,7 @@ function generateBooks(
   });
 
   // Generate 10 stable books per page
-  const books = Array.from({ length: 10 }, (_, i) => {
+  const books = Array.from({ length: 20 }, (_, i) => {
     const index = (page - 1) * 10 + i + 1;
 
     // ✅ Seed per book based on index + user seed
